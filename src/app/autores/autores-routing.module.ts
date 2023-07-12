@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ListadoAutoresComponent } from './pages/listado-autores/listado-autores.component';
 import { ObrasFavoritasComponent } from './pages/obras-favoritas/obras-favoritas.component';
+import { AuthGuard } from '../auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       {
         path: 'favoritos',
         component: ObrasFavoritasComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: '**',

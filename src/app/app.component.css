@@ -1,0 +1,11 @@
+.collapse{
+    display: flex;
+    justify-content: space-between;
+}
+.container-menu-nav{
+    padding: 5px 25px;
+    font-size: 20px ;
+}
+.navbar-brand{
+    font-size: 28px;
+}

@@ -1,1 +1,46 @@
-<p>listado-autores works!</p>
+<div class="spinner" *ngIf="!autores; else divAutores">
+    <mat-spinner></mat-spinner>
+  </div>
+  
+  <ng-template #divAutores>
+    <div class="container">
+      <h1>Lista de autores</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Autores</th>
+            <th scope="col">Ver Obras</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let autor of autoresPaginados; index as i">
+            <th scope="row">{{ obtenerNumeroRegistro(i) }}</th>
+            <td>{{ autor }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="openModal(autor)">Ver Obras</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center container-paginacion">
+        <nav>
+          <ul class="pagination">
+            <li class="page-item" [class.disabled]="pagina === 1">
+              <a class="page-link" href="" (click)="anteriorPagina($event)">Anterior</a>
+            </li>
+            <li class="page-item" [class.active]="p === pagina" *ngFor="let p of range(1, totalPaginas)">
+              <a class="page-link" href="" (click)="irAPagina($event, p)">{{ p }}</a>
+            </li>
+            <li class="page-item" [class.disabled]="pagina === totalPaginas">
+              <a class="page-link" href="" (click)="siguientePagina($event)">Siguiente</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div>.</div>
+    </div>
+    
+    
+  </ng-template>
+  

@@ -1,1 +1,59 @@
-<p>modal-obras works!</p>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title"></h2>
+            <button type="button" class="close btn btn-link btn-lg" data-dismiss="modal" aria-label="Cerrar"
+                (click)="closeModal()">
+                <i class="bi bi-x-circle bi-3x"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-4 obras-random" style="margin-bottom: 40px;">
+                    <h2>Obras random</h2>
+                    <div class="row g-4">
+                        <div class="col-6" *ngFor="let obra of obrasRandom">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title"><b>Titulo:</b> {{ obra.title }}</h4>
+                                    <p class="card-text"><b>Autor:</b> {{ obra.author }}</p>
+                                    <button class="btn btn-sm btn-primary" [disabled]="isObraFavorita(obra)"
+                                        (click)="guardarObraFavorita(obra)">
+                                        {{ isObraFavorita(obra) ? 'Añadido a favoritos' : 'Agregar a favoritos' }}
+                                        <i class="bi bi-check-circle-fill" *ngIf="isObraFavorita(obra)"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <h2>Obras del autor</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
+                        <div class="col" *ngFor="let obra of obras">
+                            <div class="card" style="width: 18rem;">
+                                <img src="/assets/PoetaCover.jpg" class="card-img-top" alt="Imagen de la obra">
+                                <div class="card-body">
+                                    <h2 class="card-title">Titulo: {{ obra.title }}</h2>
+                                    <p class="card-text"><b>Autor:</b> {{ autor }}</p>
+                                    <p><b>Fragmento de la obra:</b></p>
+                                    <ng-container *ngFor="let line of obra.lines; let i = index">
+                                        <p *ngIf="i < 4">{{ line }}</p>
+                                    </ng-container>
+                                    <p *ngIf="obra.lines.length > 4">...</p>
+                                    <p class="card-text"><b>Número de líneas:</b> {{ obra.linecount }}</p>
+                                    <button class="btn btn-primary" [disabled]="isObraFavorita(obra)"
+                                        (click)="guardarObraFavorita(obra)">
+                                        {{ isObraFavorita(obra) ? 'Añadido a favoritos' : 'Agregar a favoritos' }}
+                                        <i class="bi bi-check-circle-fill" *ngIf="isObraFavorita(obra)"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

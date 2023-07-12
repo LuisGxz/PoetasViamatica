@@ -1,1 +1,26 @@
-<p>obras-favoritas works!</p>
+<div class="container">
+  <h1 class="title-obras">Obras Favoritas ({{ obrasFavoritas.length }})</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Autor</th>
+        <th>Título de la Obra</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obra of obrasFavoritas; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ obra.author }}</td>
+        <td>{{ obra.title }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="eliminarFavorito(obra.title)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
