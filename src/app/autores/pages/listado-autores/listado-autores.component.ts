@@ -10,7 +10,7 @@ import { ModalObrasComponent } from '../../components/modal-obras/modal-obras.co
 })
 export class ListadoAutoresComponent implements OnInit {
 
-  autores: string[] = [];
+  autores!: string[];
   autoresPaginados: string[] = [];
   pagina = 1;
   registrosPorPagina = 10;

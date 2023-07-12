@@ -31,4 +31,10 @@ export class AuthService {
     const authToken = localStorage.getItem(this.AUTH_TOKEN_KEY);
     return of(!!authToken);
   }
+
+  isAuthenticated(): boolean {
+    // Verifica si el usuario está autenticado comprobando si hay un token de autenticación en el local storage
+    const authToken = localStorage.getItem(this.AUTH_TOKEN_KEY);
+    return !!authToken;
+  }
 }

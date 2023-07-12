@@ -8,3 +8,6 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+.container{
+    margin: 30px auto;
+}
